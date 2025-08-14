@@ -1,32 +1,24 @@
-import { Link, Stack } from 'expo-router';
-import { StyleSheet } from 'react-native';
+import { images } from "@/constants/images";
+import React from "react";
+import { Image, Text, View } from "react-native";
 
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function NotFoundScreen() {
+//  This file is used to display a "Page Not Found" screen
+//  when a user navigates to a route that does not exist in the app.
+export default function Notfound() {
   return (
-    <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
-      <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen does not exist.</ThemedText>
-        <Link href="/" style={styles.link}>
-          <ThemedText type="link">Go to home screen!</ThemedText>
-        </Link>
-      </ThemedView>
-    </>
+    <View className="h-screen flex-1 items-center justify-center">
+      <Image
+        source={images.pageNotFound}
+        className="pb-5 object-contain w-60 h-40"
+      />
+
+      <Text className="text-2xl font-JakartaExtraBold mt-8 mb-4">
+        Page Not Found
+      </Text>
+
+      <Text className="text-lg text-gray-700">
+        The page you are looking for does not exist.
+      </Text>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  link: {
-    marginTop: 15,
-    paddingVertical: 15,
-  },
-});

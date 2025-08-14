@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* general styles */
+.descText {
+  @apply text-neutral-500 break-words text-preety font-JakartaMedium font-medium;
+}
+
+/* App styles */
+/* This is used to remove the default safeAreaview styling applied on IOS devices */
+.noDefultSafeAreaView {
+  @apply absolute top-0 bottom-0 left-0 right-0 flex-1 bg-white;
+}
+
+/* Page styles */
+.tabPage {
+  @apply h-full px-5;
+}
+.header {
+  @apply flex flex-row items-center justify-between mt-2 mb-3;
+}
+.headerTitle {
+  @apply font-JakartaSemiBold text-2xl font-semibold;
+}
+
+/* Icon styles */
+.icon {
+  @apply w-12 h-12 flex items-center justify-center bg-white rounded-full mr-2;
+}
+.iconImg {
+  @apply w-6 h-6;
+}
+
+/* Section block styles */
+.sectionBlockHeading {
+  @apply font-JakartaMedium text-xl font-medium text-neutral-900 mt-6;
+}
+.sectionBlock {
+  @apply p-6 bg-white rounded-xl mb-6;
+}
+.sectionBlockItem {
+  @apply text-lg font-JakartaMedium font-medium text-neutral-900;
+}
