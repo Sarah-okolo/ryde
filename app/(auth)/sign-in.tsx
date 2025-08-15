@@ -20,7 +20,10 @@ export default function SignIn() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView
+      className="flex-1 bg-white pb-10"
+      showsVerticalScrollIndicator={false}
+    >
       <View className="flex-1">
         <View className="relative w-full h-[250px]">
           <Image source={images.signUpCar} className="z-0 w-full h-[250px]" />

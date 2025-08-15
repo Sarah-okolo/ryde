@@ -1,6 +1,7 @@
+import { iconColor, iconSize } from "@/constants/icons";
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import CustomButton from "../customButton";
 
 export default function AccountSettings() {
   return (
@@ -8,15 +9,39 @@ export default function AccountSettings() {
       <Text className="sectionBlockHeading">Account Settings</Text>
 
       <View className="sectionBlock">
-        <TouchableOpacity className="flex-1 flex-row items-center gap-2 mb-4">
-          <Text className="sectionBlockItem">Change Password</Text>
+        <TouchableOpacity className="sectionBlockItem flexBetween">
+          <View className="flexBetween">
+            <Ionicons
+              name="lock-closed-outline"
+              size={iconSize.md}
+              color={iconColor.primary}
+            />
+            <Text className="sectionBlockItemHeading">Change Password</Text>
+          </View>
+          <Ionicons
+            name="chevron-forward"
+            size={iconSize.lg}
+            color={iconColor.secondary}
+          />
         </TouchableOpacity>
 
-        <CustomButton
-          title="Delete Account"
-          bgVariant="danger"
-          textVariant="danger"
-        />
+        <TouchableOpacity className="sectionBlockItem flexBetween">
+          <View className="flexBetween">
+            <Ionicons
+              name="trash-outline"
+              size={iconSize.md}
+              color={iconColor.danger}
+            />
+            <Text className="sectionBlockItemHeading !text-danger-600">
+              Delete Account
+            </Text>
+          </View>
+          <Ionicons
+            name="chevron-forward"
+            size={iconSize.lg}
+            color={iconColor.danger}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );

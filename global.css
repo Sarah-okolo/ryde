@@ -4,7 +4,13 @@
 
 /* general styles */
 .descText {
-  @apply text-neutral-500 break-words text-preety font-JakartaMedium font-medium;
+  @apply text-neutral-500 break-words font-JakartaMedium font-medium;
+}
+.flexCenter {
+  @apply flex flex-1 flex-row items-center justify-center;
+}
+.flexBetween {
+  @apply flex flex-row items-center justify-between gap-3;
 }
 
 /* App styles */
@@ -34,11 +40,17 @@
 
 /* Section block styles */
 .sectionBlockHeading {
-  @apply font-JakartaMedium text-xl font-medium text-neutral-900 mt-6;
+  @apply font-JakartaMedium text-xl font-medium text-neutral-900 mt-6 mb-3;
 }
 .sectionBlock {
-  @apply p-6 bg-white rounded-xl mb-6;
+  @apply px-6 py-3 bg-white rounded-xl;
 }
 .sectionBlockItem {
+  @apply my-3;
+}
+.sectionBlockItemHeading {
   @apply text-lg font-JakartaMedium font-medium text-neutral-900;
+}
+.sectionBlockItemText {
+  @apply text-neutral-400 font-normal font-Jakarta;
 }

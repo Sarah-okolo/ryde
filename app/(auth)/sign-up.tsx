@@ -10,7 +10,8 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 export default function SignUp() {
   const [form, setForm] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -21,7 +22,10 @@ export default function SignUp() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView
+      className="flex-1 bg-white pb-10"
+      showsVerticalScrollIndicator={false}
+    >
       <View className="flex-1">
         <View className="relative w-full h-[250px]">
           <Image source={images.signUpCar} className="z-0 w-full h-[250px]" />
@@ -33,14 +37,27 @@ export default function SignUp() {
 
         <View className="px-7 py-5">
           <InputField
-            label="Name"
-            placeholder="Enter your name"
+            label="First Name"
+            placeholder="Enter your first name"
             icon={icons.person}
-            value={form.name}
+            value={form.firstName}
             onChangeText={(value) =>
               setForm({
                 ...form,
-                name: value,
+                firstName: value,
+              })
+            }
+          />
+
+          <InputField
+            label="Last Name"
+            placeholder="Enter your last name"
+            icon={icons.person}
+            value={form.lastName}
+            onChangeText={(value) =>
+              setForm({
+                ...form,
+                lastName: value,
               })
             }
           />
@@ -60,7 +77,7 @@ export default function SignUp() {
 
           <InputField
             label="Password"
-            placeholder="Enter your password"
+            placeholder="Create your password"
             icon={icons.lock}
             value={form.password}
             secureTextEntry={true}

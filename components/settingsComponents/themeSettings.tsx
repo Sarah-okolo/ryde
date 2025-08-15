@@ -1,4 +1,5 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { iconColor, iconSize } from "@/constants/icons";
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Text, View } from "react-native";
 
@@ -8,46 +9,43 @@ export default function ThemeSettings() {
       <Text className="sectionBlockHeading">Theme Settings</Text>
 
       <View className="sectionBlock">
-        <View className="flex-row items-center justify-between mb-4">
-          <Text className="text-lg font-medium text-neutral-900">
-            Dark Mode
-          </Text>
-          <MaterialCommunityIcons
-            name="toggle-switch"
-            size={24}
-            className="fill-main"
-          />
-        </View>
+        <Themeblock iconName="sunny-outline" themeName="Light Theme" />
 
-        <View className="flex-row items-center justify-between mb-4">
-          <Text className="settingsText">
-            Light Mode
-          </Text>
-          <MaterialCommunityIcons
-            name="toggle-switch-off"
-            size={24}
-            color="blue"
-          />
-        </View>
+        <Themeblock iconName="moon-outline" themeName="Dark Theme" />
 
-        <View className="flex-row items-center justify-between mb-4 gap-3">
-          <View className="flex-1">
-            <Text className="text-lg font-medium text-neutral-900">
-              System Default
-            </Text>
-            <Text className="text-sm descText">
-              When enabled, the app will follow your device&apos;s theme
-              settings.
-            </Text>
-          </View>
-
-          <MaterialCommunityIcons
-            name="toggle-switch"
-            size={24}
-            color="black"
-          />
-        </View>
+        <Themeblock iconName="contrast-outline" themeName="System Default" />
       </View>
+    </View>
+  );
+}
+
+function Themeblock({
+  iconName,
+  themeName,
+  isActive = true,
+  onPress,
+}: {
+  iconName: React.ComponentProps<typeof Ionicons>["name"];
+  themeName: string;
+  isActive?: boolean;
+  onPress?: () => void;
+}) {
+  return (
+    <View className="sectionBlockItem flexBetween">
+      <View className="flexBetween">
+        <Ionicons
+          name={iconName}
+          size={iconSize.md}
+          color={iconColor.primary}
+        />
+        <Text className="sectionBlockItemHeading">{themeName}</Text>
+      </View>
+
+      <Ionicons
+        name={isActive ? "checkmark-circle" : "radio-button-off"}
+        size={iconSize.lg}
+        color={isActive ? iconColor.main : iconColor.secondary}
+      />
     </View>
   );
 }

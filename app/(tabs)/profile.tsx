@@ -40,7 +40,7 @@ export default function Profile() {
         </TouchableOpacity>
       </View>
 
-      <ScrollView className="sectionBlock">
+      <ScrollView className="sectionBlock" showsVerticalScrollIndicator={false}>
         <DetailsFields fieldTitle="First name" fieldValue="Sarah" />
         <DetailsFields fieldTitle="Last name" fieldValue="Johnson" />
         <DetailsFields

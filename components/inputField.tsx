@@ -38,7 +38,7 @@ export default function InputField({
           </Text>
 
           <View
-            className={`flex flex-row justify-start items-center  relative rounded-full border ${containerStyle} ${isFocused ? "bg-primary-100 border-main" : "bg-neutral-100 border-neutral-200"}`}
+            className={`flex flex-row justify-start items-center relative rounded-full border ${containerStyle} ${isFocused ? "bg-primary-100 border-main" : "bg-neutral-100 border-neutral-200"}`}
           >
             {icon && (
               <Image source={icon} className={`w-6 h-6 ml-4 ${iconStyle}`} />

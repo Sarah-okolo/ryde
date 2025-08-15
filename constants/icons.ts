@@ -1,3 +1,5 @@
+
+
 import arrowDown from "@/assets/icons/arrow-down.png";
 import arrowUp from "@/assets/icons/arrow-up.png";
 import backArrow from "@/assets/icons/back-arrow.png";
@@ -67,4 +69,23 @@ export const icons = {
   noProfilePhoto,
   editImage,
   editField,
+};
+
+export const iconColor = {
+  primary: "#171717",
+  secondary: "#a3a3a3",
+  success: "#38A169",
+  danger: "#E53E3E",
+  disabled: "#f0f0f0",
+  white: "#FFFFFF",
+  main: "#7923e1",
+};
+
+export const iconSize = {
+  xs: 12,
+  sm: 16,
+  md: 20,
+  lg: 24,
+  xl: 28,
+  xxl: 32,
 };

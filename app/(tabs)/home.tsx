@@ -33,7 +33,7 @@ export default function Home() {
       </View>
 
       {/* We are wrapping the content in scrollview to enusre that the keyboard is dismissed when anywhere outside the searchBar is clicked */}
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <SearchBar />
 
         <View className="">

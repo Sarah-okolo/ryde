@@ -1,16 +1,11 @@
-import LogoutBtn from "@/components/logoutBtn";
-import AccountSettings from "@/components/settingsComponents/accountSettings";
-import AppInfo from "@/components/settingsComponents/appInfo";
-import NotificationSettings from "@/components/settingsComponents/notificationSettings";
-import SupportInfo from "@/components/settingsComponents/supportInfo";
-import ThemeSettings from "@/components/settingsComponents/themeSettings";
 import { iconColor, iconSize } from "@/constants/icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
+import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Index() {
+export default function TermsOfUse() {
   return (
     <SafeAreaView className="tabPage">
       <View className="header">
@@ -27,23 +22,11 @@ export default function Index() {
             />
           </TouchableOpacity>
 
-          <Text className="headerTitle">Settings</Text>
+          <Text className="headerTitle">Terms of Use</Text>
         </View>
-
-        <LogoutBtn />
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <ThemeSettings />
-
-        <NotificationSettings />
-
-        <AccountSettings />
-
-        <SupportInfo />
-
-        <AppInfo />
-      </ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
     </SafeAreaView>
   );
 }

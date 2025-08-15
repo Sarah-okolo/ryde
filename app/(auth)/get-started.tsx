@@ -7,7 +7,10 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 export default function SignUp() {
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView
+      className="flex-1 bg-white"
+      showsVerticalScrollIndicator={false}
+    >
       <Image source={images.getStarted} className="z-0 w-full h-[400px]" />
 
       <View className="px-6">
