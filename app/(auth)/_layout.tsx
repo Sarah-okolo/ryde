@@ -1,8 +1,10 @@
+import { Colors } from "@/components/nativeThemeSetter";
 import { useAuth } from "@clerk/clerk-expo";
 import { Redirect, Stack } from "expo-router";
 import { StatusBar, View } from "react-native";
 
 export default function Layout() {
+  const colors = Colors();
   const { isSignedIn } = useAuth();
 
   // If the user is signed in, redirect to the home screen.
@@ -15,41 +17,21 @@ export default function Layout() {
       <StatusBar hidden={true} />
 
       <View className="noDefultSafeAreaView">
-        <Stack>
-          <Stack.Screen
-            name="welcome"
-            options={{
-              headerShown: false,
-            }}
-          />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { flex: 1, backgroundColor: colors.background },
+          }}
+        >
+          <Stack.Screen name="welcome" />
 
-          <Stack.Screen
-            name="sign-up"
-            options={{
-              headerShown: false,
-            }}
-          />
+          <Stack.Screen name="sign-up" />
 
-          <Stack.Screen
-            name="sign-in"
-            options={{
-              headerShown: false,
-            }}
-          />
+          <Stack.Screen name="sign-in" />
 
-          <Stack.Screen
-            name="get-started"
-            options={{
-              headerShown: false,
-            }}
-          />
+          <Stack.Screen name="get-started" />
 
-          <Stack.Screen
-            name="forgot-password"
-            options={{
-              headerShown: false,
-            }}
-          />
+          <Stack.Screen name="forgot-password" />
         </Stack>
       </View>
     </>

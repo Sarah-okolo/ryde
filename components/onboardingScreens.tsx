@@ -18,12 +18,12 @@ export default function OnboardingScreens({ screen }: OnboardingScreenProps) {
       />
 
       <View className="flex flex-row items-center justify-center w-full">
-        <Text className="text-black text-3xl font-bold mx-10 text-center">
+        <Text className="text-3xl font-bold mx-10 text-center text-textPrimary">
           {screen.title}
         </Text>
       </View>
 
-      <Text className="descText text-lg text-center mt-3 mx-10">
+      <Text className="descText text-lg text-center mt-7 mx-10">
         {screen.description}
       </Text>
     </View>

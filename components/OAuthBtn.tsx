@@ -15,7 +15,7 @@ export default function OAuthBtn({ text }: { text?: string }) {
         title="Continue with Google"
         className="p-4"
         bgVariant="outline"
-        textVariant="primary"
+        textVariant="secondary"
         IconLeft={() => (
           <Image
             source={icons.google}

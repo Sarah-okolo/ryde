@@ -21,7 +21,7 @@ export default function SignIn() {
 
   return (
     <ScrollView
-      className="flex-1 bg-white pb-10"
+      className="flex-1 pb-10"
       showsVerticalScrollIndicator={false}
     >
       <View className="flex-1">

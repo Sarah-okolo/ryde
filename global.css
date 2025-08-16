@@ -2,9 +2,123 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Light Color palette */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Base surfaces */
+  --color-background: #f9fafb;
+  --color-foreground: var(--color-white);
+
+  /* Brand */
+  --color-primary: #6366f1; /* Indigo 500 */
+  --color-secondary: #3b82f6; /* Blue 500 */
+  --color-accent: #10b981; /* Emerald 500 */
+
+  /* Text */
+  --color-text-primary: #111827; /* Gray 900 */
+  --color-text-secondary: #374151; /* Gray 700 */
+  --color-faint-text: #9ca3af; /* Gray 400 */
+
+  /* Buttons */
+  --color-button-primary: var(--color-primary);
+  --color-button-secondary: #e5e7eb; /* Gray 200 */
+  --color-button-text-primary: var(--color-white);
+  --color-button-text-secondary: #111827;
+
+  /* Icons */
+  --color-icon-primary: #181818;
+  --color-icon-secondary: #5b6573;
+  --color-icon-faint: #a8a7a7;
+
+  /* Borders & shadows */
+  --color-border: #d1d5db; /* Gray 300 */
+  --color-border-faint: #e5e7eb; /* Gray 200 */
+  --color-shadow-sm: rgba(0, 0, 0, 0.05);
+  --color-shadow-md: rgba(0, 0, 0, 0.1);
+  --color-shadow-lg: rgba(0, 0, 0, 0.15);
+
+  /* Inputs */
+  --color-input-background: #ffffff;
+  --color-input-text: #111827;
+  --color-input-placeholder: #9ca3af;
+  --color-input-border: #d1d5db;
+  --color-input-focus-border: var(--color-primary);
+  --color-input-focus-background: #f9fafb;
+  --color-input-focus-text: #111827;
+  --color-input-focus-placeholder: #6b7280;
+  --color-input-focus-shadow: rgba(99, 102, 241, 0.3);
+
+  /* Status colors */
+  --color-success: #22c55e; /* Green 500 */
+  --color-error: #ef4444; /* Red 500 */
+  --color-danger: #dc2626; /* Red 600 */
+  --color-warning: #f59e0b; /* Amber 500 */
+  --color-info: #0ea5e9; /* Sky 500 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Color palette */
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    /* Base surfaces */
+    --color-background: #151a25; /* Gray 900 */
+    --color-foreground: #1f2937; /* Gray 800 */
+
+    /* Brand */
+    --color-primary: #818cf8; /* Indigo 400 */
+    --color-secondary: #60fa89; /* Blue 400 */
+    --color-accent: #34d399; /* Emerald 400 */
+
+    /* Text */
+    --color-text-primary: #f9fafb; /* Gray 50 */
+    --color-text-secondary: #d1d5db; /* Gray 300 */
+    --color-faint-text: #9ca3af; /* Gray 500 */
+
+    /* Buttons */
+    --color-button-primary: var(--color-primary);
+    --color-button-secondary: #374151; /* Gray 700 */
+    --color-button-text-primary: #111827;
+    --color-button-text-secondary: #f9fafb;
+
+    /* Icons */
+    --color-icon-primary: #e5e7eb;
+    --color-icon-secondary: #9ca3af;
+    --color-icon-faint: #6b7280;
+
+    /* Borders & shadows */
+    --color-border: #374151; /* Gray 700 */
+    --color-border-faint: #1f2937; /* Gray 800 */
+    --color-shadow-sm: rgba(0, 0, 0, 0.2);
+    --color-shadow-md: rgba(0, 0, 0, 0.3);
+    --color-shadow-lg: rgba(0, 0, 0, 0.4);
+
+    /* Inputs */
+    --color-input-background: #1f2937;
+    --color-input-text: #f9fafb;
+    --color-input-placeholder: #9ca3af;
+    --color-input-border: #374151;
+    --color-input-focus-border: var(--color-primary);
+    --color-input-focus-background: #111827;
+    --color-input-focus-text: #f9fafb;
+    --color-input-focus-placeholder: #d1d5db;
+    --color-input-focus-shadow: rgba(129, 140, 248, 0.4);
+
+    /* Status colors (slightly lighter for dark mode) */
+    --color-success: #4ade80; /* Green 400 */
+    --color-error: #f87171; /* Red 400 */
+    --color-danger: #ef4444; /* Red 500 */
+    --color-warning: #fbbf24; /* Amber 400 */
+    --color-info: #38bdf8; /* Sky 400 */
+  }
+}
+
 /* general styles */
 .descText {
-  @apply text-neutral-500 break-words font-JakartaMedium font-medium;
+  @apply break-words font-JakartaMedium font-medium text-faintText;
 }
 .flexCenter {
   @apply flex flex-1 flex-row items-center justify-center;
@@ -16,23 +130,30 @@
 /* App styles */
 /* This is used to remove the default safeAreaview styling applied on IOS devices */
 .noDefultSafeAreaView {
-  @apply absolute top-0 bottom-0 left-0 right-0 flex-1 bg-white;
+  @apply absolute top-0 bottom-0 left-0 right-0 flex-1;
+}
+
+.screenPadBotttom {
+  @apply pb-28;
+}
+.screenMagBotttom {
+  @apply mb-10;
 }
 
 /* Page styles */
 .tabPage {
-  @apply h-full px-5;
+  @apply flex-1 h-full px-5 bg-background text-textPrimary;
 }
 .header {
   @apply flex flex-row items-center justify-between mt-2 mb-3;
 }
 .headerTitle {
-  @apply font-JakartaSemiBold text-2xl font-semibold;
+  @apply font-JakartaSemiBold text-2xl font-semibold text-secondary;
 }
 
 /* Icon styles */
 .icon {
-  @apply w-12 h-12 flex items-center justify-center bg-white rounded-full mr-2;
+  @apply w-12 h-12 flex items-center justify-center rounded-full mr-2;
 }
 .iconImg {
   @apply w-6 h-6;
@@ -40,17 +161,17 @@
 
 /* Section block styles */
 .sectionBlockHeading {
-  @apply font-JakartaMedium text-xl font-medium text-neutral-900 mt-6 mb-3;
+  @apply font-JakartaMedium text-xl font-medium mt-6 mb-3;
 }
 .sectionBlock {
-  @apply px-6 py-3 bg-white rounded-xl;
+  @apply px-6 py-3 rounded-xl bg-foreground;
 }
 .sectionBlockItem {
   @apply my-3;
 }
 .sectionBlockItemHeading {
-  @apply text-lg font-JakartaMedium font-medium text-neutral-900;
+  @apply text-lg font-JakartaMedium font-medium;
 }
 .sectionBlockItemText {
-  @apply text-neutral-400 font-normal font-Jakarta;
+  @apply font-normal font-Jakarta;
 }

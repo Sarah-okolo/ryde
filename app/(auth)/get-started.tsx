@@ -3,18 +3,15 @@ import Divider from "@/components/divider";
 import OAuthBtn from "@/components/OAuthBtn";
 import { images } from "@/constants/images";
 import { router } from "expo-router";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function SignUp() {
   return (
-    <ScrollView
-      className="flex-1 bg-white"
-      showsVerticalScrollIndicator={false}
-    >
+    <View className="flex">
       <Image source={images.getStarted} className="z-0 w-full h-[400px]" />
 
       <View className="px-6">
-        <Text className="text-3xl my-6 text-center text-black font-JakartaSemiBold">
+        <Text className="text-3xl my-6 text-center text-main font-JakartaSemiBold text-textPrimary">
           Let&apos;s get started
         </Text>
 
@@ -34,15 +31,15 @@ export default function SignUp() {
 
         <OAuthBtn />
 
-        <Text className="text-neutral-600 text-lg mt-3 flex flex-1 items-center justify-center text-center w-full">
-          <Text>Already have an account? </Text>
+        <Text className="text-faintText text-lg mt-3 flex flex-1 items-center justify-center text-center w-full">
+          <Text className="text-faintText">Already have an account? </Text>
           <TouchableOpacity onPress={() => router.replace("/(auth)/sign-in")}>
-            <Text className="text-main font-JakartaSemiBold relative top-0.5">
-              Log in
+            <Text className="text-primary font-JakartaSemiBold relative top-0.5">
+              Log In
             </Text>
           </TouchableOpacity>
         </Text>
       </View>
-    </ScrollView>
+    </View>
   );
 }

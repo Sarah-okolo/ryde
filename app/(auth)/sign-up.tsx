@@ -23,7 +23,7 @@ export default function SignUp() {
 
   return (
     <ScrollView
-      className="flex-1 bg-white pb-10"
+      className="flex-1 screenMagBotttom"
       showsVerticalScrollIndicator={false}
     >
       <View className="flex-1">
@@ -99,10 +99,10 @@ export default function SignUp() {
 
           <OAuthBtn />
 
-          <Text className="text-neutral-600 text-lg mt-3 flex flex-1 items-center justify-center text-center w-full">
+          <Text className="text-faintText mt-2 flex flex-1 items-center justify-center text-center w-full">
             <Text>Already have an account? </Text>
             <TouchableOpacity onPress={() => router.push("/(auth)/sign-in")}>
-              <Text className="text-main font-JakartaSemiBold relative top-0.5">
+              <Text className="text-primary font-JakartaSemiBold relative top-0.7">
                 Log in
               </Text>
             </TouchableOpacity>

@@ -37,7 +37,7 @@ export default function Home() {
         <SearchBar />
 
         <View className="">
-          <Text className="font-JakartaSemiBold font-semibold text-2xl my-4">
+          <Text className="font-JakartaSemiBold font-semibold text-2xl my-4 text-main">
             Your current location
           </Text>
           <Text className="descText text-center">Coming soon</Text>

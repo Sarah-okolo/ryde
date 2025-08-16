@@ -6,6 +6,8 @@ import { Tabs } from "expo-router";
 export default function _layout() {
   return (
     <Tabs
+      // Unfortunately the tabs layout does not support global background setting for all the tabs unlike stack layout.
+      // So we have to set the tabs background individually inside each tab screen page
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -21,7 +23,7 @@ export default function _layout() {
         tabBarItemStyle: {
           width: 60,
           height: 60,
-        }
+        },
       }}
     >
       <Tabs.Screen

@@ -1,49 +1,27 @@
 import { Stack } from "expo-router";
+import { Colors } from "@/components/nativeThemeSetter";
 
 export default function Layout() {
+  const colors = Colors();
+  
   return (
-    <Stack>
-      <Stack.Screen
-        name="settings-page"
-        options={{
-          headerShown: false,
-        }}
-      />
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { flex: 1, backgroundColor: colors.background },
+      }}
+    >
+      <Stack.Screen name="settings-page" />
 
-      <Stack.Screen
-        name="faqs"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Stack.Screen name="faqs" />
 
-      <Stack.Screen
-        name="live-chat"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Stack.Screen name="live-chat" />
 
-      <Stack.Screen
-        name="about-us"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Stack.Screen name="about-us" />
 
-      <Stack.Screen
-        name="terms-of-use"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Stack.Screen name="terms-of-use" />
 
-      <Stack.Screen
-        name="privacy-policy"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Stack.Screen name="privacy-policy" />
     </Stack>
   );
 }

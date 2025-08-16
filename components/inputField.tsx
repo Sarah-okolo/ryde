@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { Colors } from "./nativeThemeSetter";
 
 export default function InputField({
   label,
@@ -23,6 +24,7 @@ export default function InputField({
   ...props
 }: InputFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
+  const colors = Colors();
 
   return (
     // The keyboard avoiding view is used to adjust the view when the keyboard is open
@@ -32,23 +34,27 @@ export default function InputField({
       <TouchableWithoutFeedback>
         <View className="my-2 w-full">
           <Text
-            className={`text-lg text-black font-JakartaSemiBold mb-2 ${labelStyle}`}
+            className={`text-lg text-textPrimary font-JakartaSemiBold mb-2 ${labelStyle}`}
           >
             {label}
           </Text>
 
           <View
-            className={`flex flex-row justify-start items-center relative rounded-full border ${containerStyle} ${isFocused ? "bg-primary-100 border-main" : "bg-neutral-100 border-neutral-200"}`}
+            className={`flex flex-row justify-start items-center relative rounded-full border ${containerStyle} ${isFocused ? "bg-inputFocusBackground border-inputFocusBorder shadow-md shadow-inputFocusShadow" : "bg-inputBackground border-inputBorder"}`}
           >
             {icon && (
               <Image source={icon} className={`w-6 h-6 ml-4 ${iconStyle}`} />
             )}
 
             <TextInput
-              className={`rounded-full p-4 font-JakartaSemiBold flex-1 text-[15px] text-left ${inputStyle}`}
+              className={`rounded-full p-4 font-JakartaSemiBold flex-1 text-[15px] text-left text-inputText ${inputStyle}`}
               secureTextEntry={secureTextEntry}
               placeholder={placeholder}
-              placeholderTextColor="#A0A0A0"
+              placeholderTextColor={
+                isFocused
+                  ? colors.inputFocusPlaceholder
+                  : colors.inputPlaceholder
+              }
               value={value}
               onChangeText={onChangeText}
               onFocus={() => setIsFocused(true)}

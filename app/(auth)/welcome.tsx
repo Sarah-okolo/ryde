@@ -15,7 +15,7 @@ export default function Onboarding() {
   const isLastSlide = activeIndex === onboarding.length - 1; // Check if the current slide is the last one
 
   return (
-    <View className="bg-white flex-1 items-center justify-between pb-10">
+    <View className="flex-1 items-center justify-between screenPadBotttom">
       <TouchableOpacity
         className="w-full items-end justify-end pt-10 px-7"
         onPress={() => {
@@ -23,15 +23,17 @@ export default function Onboarding() {
           router.replace("/(auth)/get-started"); // This will replace the current screen in the stack with the sign-in screen
         }}
       >
-        <Text className="text-black text-md font-JakartaBold">Skip</Text>
+        <Text className="text-md font-JakartaBold font-bold text-textPrimary">
+          Skip
+        </Text>
       </TouchableOpacity>
 
       {/* This components is used to create swipe screens for onboarding */}
       <Swiper
         ref={swiperRef} // Reference to the swiper instance
         loop={false} // Disable looping to prevent infinite swiping
-        dot={<View className="w-8 h-1 mx-1 bg-secondary-300" />} // This allows us to customize how the swiper dots would look like
-        activeDot={<View className="w-8 h-1 mx-1 bg-main" />} // Active dot styling
+        dot={<View className="w-8 h-1 mx-1 bg-iconSecondary" />} // This allows us to customize how the swiper dots would look like
+        activeDot={<View className="w-8 h-1 mx-1 bg-primary" />} // Active dot styling
         onIndexChanged={(index) => setActiveIndex(index)} // Update the active index when the swiper changes
       >
         {/* Onboarding screens */}
