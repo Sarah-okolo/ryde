@@ -1,9 +1,12 @@
+import AuthBottomText from "@/components/authBottomText";
 import CustomButton from "@/components/customButton";
 import Divider from "@/components/divider";
 import InputField from "@/components/inputField";
+import { Colors } from "@/components/nativeThemeSetter";
 import OAuthBtn from "@/components/OAuthBtn";
-import { icons } from "@/constants/icons";
+import { iconSize } from "@/constants/icons";
 import { images } from "@/constants/images";
+import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -15,6 +18,8 @@ export default function SignUp() {
     email: "",
     password: "",
   });
+  const colors = Colors();
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const onSignUp = async () => {
     // Handle sign-up logic here
@@ -39,7 +44,6 @@ export default function SignUp() {
           <InputField
             label="First Name"
             placeholder="Enter your first name"
-            icon={icons.person}
             value={form.firstName}
             onChangeText={(value) =>
               setForm({
@@ -47,12 +51,20 @@ export default function SignUp() {
                 firstName: value,
               })
             }
+            IconLeft={() => (
+              <Ionicons
+                name="person-outline"
+                size={iconSize.md}
+                color={colors.iconSecondary}
+                className="ml-4"
+              />
+            )}
+            // error='First name is required' // to use zod validation later
           />
 
           <InputField
             label="Last Name"
             placeholder="Enter your last name"
-            icon={icons.person}
             value={form.lastName}
             onChangeText={(value) =>
               setForm({
@@ -60,12 +72,19 @@ export default function SignUp() {
                 lastName: value,
               })
             }
+            IconLeft={() => (
+              <Ionicons
+                name="person-outline"
+                size={iconSize.md}
+                color={colors.iconSecondary}
+                className="ml-4"
+              />
+            )}
           />
 
           <InputField
             label="Email"
             placeholder="Enter your email"
-            icon={icons.email}
             value={form.email}
             onChangeText={(value) =>
               setForm({
@@ -73,20 +92,47 @@ export default function SignUp() {
                 email: value,
               })
             }
+            IconLeft={() => (
+              <Ionicons
+                name="mail-outline"
+                size={iconSize.md}
+                color={colors.iconSecondary}
+                className="ml-4"
+              />
+            )}
           />
 
           <InputField
             label="Password"
-            placeholder="Create your password"
-            icon={icons.lock}
+            placeholder="Enter your password"
             value={form.password}
-            secureTextEntry={true}
+            secureTextEntry={!passwordVisible}
             onChangeText={(value) =>
               setForm({
                 ...form,
                 password: value,
               })
             }
+            IconLeft={() => (
+              <Ionicons
+                name="lock-closed-outline"
+                size={iconSize.md}
+                color={colors.iconSecondary}
+                className="ml-5"
+              />
+            )}
+            IconRight={() => (
+              <TouchableOpacity
+                onPress={() => setPasswordVisible(!passwordVisible)}
+              >
+                <Ionicons
+                  name={passwordVisible ? "eye-off-outline" : "eye-outline"}
+                  size={iconSize.md}
+                  color={colors.iconSecondary}
+                  className="mr-4"
+                />
+              </TouchableOpacity>
+            )}
           />
 
           <CustomButton
@@ -99,14 +145,11 @@ export default function SignUp() {
 
           <OAuthBtn />
 
-          <Text className="text-faintText mt-2 flex flex-1 items-center justify-center text-center w-full">
-            <Text>Already have an account? </Text>
-            <TouchableOpacity onPress={() => router.push("/(auth)/sign-in")}>
-              <Text className="text-primary font-JakartaSemiBold relative top-0.7">
-                Log in
-              </Text>
-            </TouchableOpacity>
-          </Text>
+          <AuthBottomText
+            titleText="Already have an account?"
+            linkText="Log In"
+            onpress={() => router.replace("/(auth)/sign-in")}
+          />
         </View>
       </View>
     </ScrollView>

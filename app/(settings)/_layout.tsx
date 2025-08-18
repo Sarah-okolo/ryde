@@ -22,6 +22,8 @@ export default function Layout() {
       <Stack.Screen name="terms-of-use" />
 
       <Stack.Screen name="privacy-policy" />
+
+      <Stack.Screen name="delete-account" />
     </Stack>
   );
 }

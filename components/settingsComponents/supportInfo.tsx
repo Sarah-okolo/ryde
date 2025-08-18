@@ -1,11 +1,14 @@
-import { iconColor, iconSize } from "@/constants/icons";
+import { iconSize } from "@/constants/icons";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
 import { Linking, Text, TouchableOpacity, View } from "react-native";
 import CustomButton from "../customButton";
+import { Colors } from "../nativeThemeSetter";
 
 export default function SupportInfo() {
+  const colors = Colors();
+
   const handleEmailPress = () => {
     Linking.openURL("mailto:support@rhyde.com");
   };
@@ -22,13 +25,13 @@ export default function SupportInfo() {
         <CustomButton
           title="Frequently Asked Questions"
           bgVariant="outline"
-          textVariant="primary"
+          textVariant="secondary"
           className="my-3 mx-8"
           IconRight={() => (
             <Ionicons
               name="chevron-forward-outline"
               size={iconSize.md}
-              color={iconColor.secondary}
+              color={colors.iconSecondary}
               className="mx-2"
             />
           )}
@@ -42,7 +45,7 @@ export default function SupportInfo() {
             <Ionicons
               name="mail-outline"
               size={iconSize.md}
-              color={iconColor.primary}
+              color={colors.iconSecondary}
             />
             <Text className="sectionBlockItemHeading">Email:</Text>
           </View>
@@ -58,7 +61,7 @@ export default function SupportInfo() {
             <Ionicons
               name="call-outline"
               size={iconSize.md}
-              color={iconColor.primary}
+              color={colors.iconSecondary}
             />
             <Text className="sectionBlockItemHeading">Phone:</Text>
           </View>
@@ -74,7 +77,7 @@ export default function SupportInfo() {
             <Ionicons
               name="headset-outline"
               size={iconSize.md}
-              color={iconColor.primary}
+              color={colors.iconSecondary}
             />
             <Text className="sectionBlockItemHeading">Live Chat</Text>
           </View>
@@ -88,7 +91,7 @@ export default function SupportInfo() {
             <Ionicons
               name="headset-outline"
               size={iconSize.md}
-              color={iconColor.white}
+              color={colors.buttonSecondary}
               className="mx-2"
             />
           )}

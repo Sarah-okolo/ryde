@@ -1,9 +1,12 @@
+import { Colors } from "@/components/nativeThemeSetter";
 import TabBarIcon from "@/components/tabBarIcon";
 import { icons } from "@/constants/icons";
 import { Tabs } from "expo-router";
 
 // Tabs layout
 export default function _layout() {
+  const colors = Colors();
+
   return (
     <Tabs
       // Unfortunately the tabs layout does not support global background setting for all the tabs unlike stack layout.
@@ -11,11 +14,11 @@ export default function _layout() {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: "#333333",
+          backgroundColor: colors.tabBar,
           borderColor: "transparent",
           borderRadius: 50,
           position: "absolute",
-          marginBottom: 30,
+          marginBottom: 36,
           marginHorizontal: 20,
           height: 62,
           overflow: "hidden",

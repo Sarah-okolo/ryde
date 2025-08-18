@@ -1,15 +1,25 @@
-import LogoutBtn from "@/components/logoutBtn";
+import { Colors } from "@/components/nativeThemeSetter";
+import { iconSize } from "@/constants/icons";
 import { images } from "@/constants/images";
-import { Image, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Chat() {
+  const colors = Colors();
+
   return (
     <SafeAreaView className="tabPage">
       <View className="header">
         <Text className="headerTitle">Chat List</Text>
 
-        <LogoutBtn />
+        <TouchableOpacity className="headerIcon" onPress={() => {}}>
+          <Ionicons
+            name="menu-outline"
+            size={iconSize.lg}
+            color={colors.iconPrimary}
+          />
+        </TouchableOpacity>
       </View>
 
       <NoMessage />
@@ -24,7 +34,7 @@ export function NoMessage() {
         <Image source={images.message} className="w-full h-full" />
       </View>
 
-      <Text className="text-3xl font-JakartaSemiBold font-semibold text-black">
+      <Text className="text-3xl font-JakartaSemiBold font-semibold text-textPrimary my-5">
         No Messages, yet.
       </Text>
       <Text className="descText text-center text-lg mt-2 mx-8">

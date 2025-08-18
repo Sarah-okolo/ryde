@@ -1,5 +1,8 @@
-import { icons } from "@/constants/icons";
-import ProfilePhotoStatus from "@/utils/profilePhotoStatus";
+import { Colors } from "@/components/nativeThemeSetter";
+import { iconSize } from "@/constants/icons";
+import { images } from "@/constants/images";
+import { firstLetter } from "@/utils/stringHelpers";
+import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
 import {
@@ -17,27 +20,48 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Profile() {
-  const profilePhoto = ProfilePhotoStatus();
+  const colors = Colors();
 
   return (
-    <SafeAreaView className="tabPage">
+    <SafeAreaView className="tabPage screenPadBotttom">
       <View className="header">
         <Text className="headerTitle">Your Profile</Text>
 
         <TouchableOpacity
-          className="icon"
-          onPress={() => router.push("/(settings)/settings-page")}
+          className="headerIcon"
+          onPress={() => {
+            router.push("/(settings)/settings-page");
+          }}
         >
-          <Image source={icons.settings} className="iconImg" />
+          <Ionicons
+            name="settings-outline"
+            size={iconSize.lg}
+            color={colors.iconPrimary}
+          />
         </TouchableOpacity>
       </View>
 
-      <View className="w-40 h-40 rounded-full border-2 border-white shadow-lg shadow-neutral-400 my-5 relative mx-auto">
-        <Image source={profilePhoto} className="w-full h-full rounded-full" />
+      <View className="w-32 h-32 flex items-center justify-center rounded-full border-2 border-primary mt-5 mb-7 relative mx-auto">
+        {true ? (
+          <>
+            <Image
+              source={images.profilePhoto}
+              className="w-full h-full rounded-full"
+            />
 
-        <TouchableOpacity className="absolute bottom-0 right-4 bg-white p-2 rounded-full shadow-sm shadow-neutral-100">
-          <Image source={icons.editImage} className="w-5 h-5 opacity-70" />
-        </TouchableOpacity>
+            <TouchableOpacity className="absolute -bottom-1 right-2 border border-primary bg-foreground p-2 rounded-full">
+              <Ionicons
+                name="pencil-outline"
+                size={iconSize.sm}
+                color={colors.iconPrimary}
+              />
+            </TouchableOpacity>
+          </>
+        ) : (
+          <Text className="text-primary text-3xl font-JakartaMedium font-medium">
+            {firstLetter("Sarah") + firstLetter("Johnson")}
+          </Text>
+        )}
       </View>
 
       <ScrollView className="sectionBlock" showsVerticalScrollIndicator={false}>
@@ -62,6 +86,7 @@ export const DetailsFields = ({
   fieldValue: string;
 }) => {
   const [fieldEditable, setFieldEditable] = useState(false);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"} // This adjusts the view when the keyboard is open
@@ -70,24 +95,20 @@ export const DetailsFields = ({
         onPress={() => Keyboard.dismiss()} // This dismisses the keyboard when the user taps outside the input field
       >
         <View>
-          <Text className="font-JakartaMedium text-xl my-4 text-neutral-500">
+          <Text className="font-JakartaMedium text-lg mt-4 mb-3 text-textSecondary">
             {fieldTitle}
           </Text>
 
           <View
-            className={`bg-primary-100 p-4 rounded-full flex flex-row justify-between items-center border  ${fieldEditable ? "border-main" : "border-transparent"}`}
+            className={`px-4 rounded-full flex flex-row justify-between items-center border ${fieldEditable ? "border-primary" : "border-inputBorder bg-inputBackground"}`}
           >
             <TextInput
-              className={`font-JakartaMedium font-medium text-xl text-neutral-600 flex-1 mr-3`}
+              className={`rounded-full py-4 font-JakartaSemiBold flex-1 text-[15px] text-left mr-3 ${fieldEditable ? "text-inputText" : "text-inputPlaceholder"}`}
               editable={fieldEditable}
               defaultValue={fieldValue}
               onChangeText={() => {}}
               focusable={fieldEditable}
             />
-
-            <TouchableOpacity onPress={() => setFieldEditable(!fieldEditable)}>
-              <Image source={icons.editField} className="w-8 h-8" />
-            </TouchableOpacity>
           </View>
         </View>
       </TouchableWithoutFeedback>

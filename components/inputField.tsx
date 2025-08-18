@@ -1,7 +1,6 @@
 import { InputFieldProps } from "@/types/type";
 import React, { useState } from "react";
 import {
-  Image,
   KeyboardAvoidingView,
   Text,
   TextInput,
@@ -16,12 +15,12 @@ export default function InputField({
   placeholder,
   value,
   inputStyle,
-  icon,
-  iconStyle,
+  IconLeft,
+  IconRight,
   onChangeText,
   containerStyle,
   secureTextEntry = false,
-  ...props
+  error,
 }: InputFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
   const colors = Colors();
@@ -40,11 +39,9 @@ export default function InputField({
           </Text>
 
           <View
-            className={`flex flex-row justify-start items-center relative rounded-full border ${containerStyle} ${isFocused ? "bg-inputFocusBackground border-inputFocusBorder shadow-md shadow-inputFocusShadow" : "bg-inputBackground border-inputBorder"}`}
+            className={`flex flex-row justify-start items-center relative rounded-full border ${containerStyle} ${isFocused ? "bg-inputFocusBackground border-inputFocusBorder/50" : "bg-inputBackground border-inputBorder"}`}
           >
-            {icon && (
-              <Image source={icon} className={`w-6 h-6 ml-4 ${iconStyle}`} />
-            )}
+            {IconLeft && <IconLeft />}
 
             <TextInput
               className={`rounded-full p-4 font-JakartaSemiBold flex-1 text-[15px] text-left text-inputText ${inputStyle}`}
@@ -59,9 +56,18 @@ export default function InputField({
               onChangeText={onChangeText}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
-              {...props}
             />
+
+            {IconRight && <IconRight />}
           </View>
+
+          {error && (
+            <Text
+              className={`text-sm text-error font-JakartaMedium font-medium mt-1 ml-2`}
+            >
+              {error}
+            </Text>
+          )}
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

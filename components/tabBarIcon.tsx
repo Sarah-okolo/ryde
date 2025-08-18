@@ -10,9 +10,10 @@ export default function TabBarIcon({
 }) {
   return (
     <View
-      className={`rounded-full p-2.5 relative top-3 ${focused ? "bg-main" : "bg-transparent"}`}
+      className={`rounded-full p-2.5 relative top-3 ${focused ? "bg-accent" : "bg-transparent"}`}
     >
       <Image source={icon} className="w-8 h-8" />
     </View>
   );
 }
+//  In dark mode accent would be lighter purple. in light mode, accent would be darker green

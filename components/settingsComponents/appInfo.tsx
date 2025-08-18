@@ -1,10 +1,14 @@
-import { iconColor, iconSize } from "@/constants/icons";
+import { iconSize } from "@/constants/icons";
+import { version } from "@/package.json";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { Colors } from "../nativeThemeSetter";
 
 export default function AppInfo() {
+  const colors = Colors();
+
   return (
     <View>
       <Text className="sectionBlockHeading">App Info</Text>
@@ -12,7 +16,7 @@ export default function AppInfo() {
       <View className="sectionBlock">
         <View className="sectionBlockItem flexBetween">
           <Text className="sectionBlockItemHeading">Version</Text>
-          <Text className="sectionBlockItemText">1.0.0</Text>
+          <Text className="sectionBlockItemText">{version}</Text>
         </View>
 
         <TouchableOpacity
@@ -25,7 +29,7 @@ export default function AppInfo() {
           <Ionicons
             name="chevron-forward"
             size={iconSize.lg}
-            color={iconColor.secondary}
+            color={colors.iconSecondary}
           />
         </TouchableOpacity>
 
@@ -39,7 +43,7 @@ export default function AppInfo() {
           <Ionicons
             name="chevron-forward"
             size={iconSize.lg}
-            color={iconColor.secondary}
+            color={colors.iconSecondary}
           />
         </TouchableOpacity>
 
@@ -53,7 +57,7 @@ export default function AppInfo() {
           <Ionicons
             name="chevron-forward"
             size={iconSize.lg}
-            color={iconColor.secondary}
+            color={colors.iconSecondary}
           />
         </TouchableOpacity>
       </View>

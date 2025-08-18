@@ -1,8 +1,9 @@
-import { iconColor, iconSize } from "@/constants/icons";
+import { iconSize } from "@/constants/icons";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { Colors } from "../nativeThemeSetter";
 
 export default function ThemeSettings() {
   const { theme, setTheme } = useTheme(); // Access the current theme and the function to set a new theme
@@ -37,24 +38,28 @@ export default function ThemeSettings() {
   );
 }
 
+interface ThemeBlockProps {
+  iconName: React.ComponentProps<typeof Ionicons>["name"];
+  themeName: string;
+  isActive?: boolean;
+  onPress?: () => void;
+}
+
 function Themeblock({
   iconName,
   themeName,
   isActive,
   onPress,
-}: {
-  iconName: React.ComponentProps<typeof Ionicons>["name"];
-  themeName: string;
-  isActive?: boolean;
-  onPress?: () => void;
-}) {
+}: ThemeBlockProps) {
+  const colors = Colors();
+
   return (
     <View className="sectionBlockItem flexBetween">
       <View className="flexBetween">
         <Ionicons
           name={iconName}
           size={iconSize.md}
-          color={iconColor.primary}
+          color={colors.iconSecondary}
         />
         <Text className="sectionBlockItemHeading">{themeName}</Text>
       </View>
@@ -63,7 +68,7 @@ function Themeblock({
         <Ionicons
           name={isActive ? "checkmark-circle" : "radio-button-off"}
           size={iconSize.lg}
-          color={isActive ? iconColor.main : iconColor.secondary}
+          color={isActive ? colors.primary : colors.iconFaint}
         />
       </TouchableOpacity>
     </View>

@@ -1,7 +1,7 @@
-import { icons } from "@/constants/icons";
+import { iconSize } from "@/constants/icons";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-  Image,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -9,9 +9,11 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { Colors } from "./nativeThemeSetter";
 
-export default function SearchBar({ ...props }: any) {
+export default function SearchBar() {
   const [isFocused, setIsFocused] = useState(false);
+  const colors = Colors();
 
   return (
     // The keyboard avoiding view is used to adjust the view when the keyboard is open
@@ -25,19 +27,27 @@ export default function SearchBar({ ...props }: any) {
       >
         <View className="my-2 w-full">
           <View
-            className={`flex flex-row justify-start items-center relative rounded-full shadow-sm shadow-neutral-200 border ${isFocused ? "bg-primary-100/70 border-main" : "bg-neutral-100 border-neutral-200"}`}
+            className={`flex flex-row justify-start items-center relative rounded-full border ${isFocused ? "bg-inputFocusBackground border-inputFocusBorder/50" : "bg-inputBackground border-inputBorder"}`}
           >
-            <Image source={icons.search} className="w-6 h-6 ml-4" />
+            <Ionicons
+              name="search-outline"
+              size={iconSize.md}
+              color={colors.iconSecondary}
+              className="ml-5"
+            />
 
             <TextInput
-              className={`rounded-full p-4 font-JakartaSemiBold flex-1 text-black text-[15px] text-left`}
+              className={`rounded-full p-4 font-JakartaSemiBold flex-1 text-[15px] text-left text-inputText`}
               placeholder="Where do you want to go?"
-              placeholderTextColor="#A0A0A0"
+              placeholderTextColor={
+                isFocused
+                  ? colors.inputFocusPlaceholder
+                  : colors.inputPlaceholder
+              }
               // value={value}
               // onChangeText={onChangeText}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
-              {...props}
             />
           </View>
         </View>

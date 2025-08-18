@@ -1,33 +1,59 @@
+import Map from "@/components/map";
+import { Colors } from "@/components/nativeThemeSetter";
 import SearchBar from "@/components/searchBar";
-import { icons } from "@/constants/icons";
-import ProfilePhotoStatus from "@/utils/profilePhotoStatus";
+import { iconSize } from "@/constants/icons";
+import { images } from "@/constants/images";
+import { firstLetter } from "@/utils/stringHelpers";
+import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
-  const [hasNotifications, setHasNotifications] = useState(true);
-  const profilePhoto = ProfilePhotoStatus();
+  const [hasNotifications, setHasNotifications] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const colors = Colors();
 
   return (
     <SafeAreaView className="tabPage">
       <View className="header">
         <View className="flex-1 flex-row gap-3 items-center">
-          <Image
-            source={profilePhoto}
-            className="w-12 h-12 rounded-full border border-white shadow-sm shadow-neutral-300"
-          />
+          <View className="w-12 h-12 flex items-center justify-center rounded-full border border-primary">
+            {true ? (
+              <Image
+                source={images.profilePhoto}
+                className="w-full h-full rounded-full"
+              />
+            ) : (
+              <Text className="text-primary text-lg font-JakartaMedium font-medium">
+                {firstLetter("Sarah") + firstLetter("Johnson")}
+              </Text>
+            )}
+          </View>
 
           <Text className="headerTitle">
-            Hi, <Text className="text-main">{"Sarah"}</Text>
+            Hi,{" "}
+            <Text
+              className={`text-primary ${isLoading ? "animate-pulse" : ""}`}
+            >
+              {isLoading ? "..." : "Sarah"}
+            </Text>
           </Text>
         </View>
 
-        <TouchableOpacity className="icon">
+        <TouchableOpacity className="headerIcon">
           {hasNotifications ? (
-            <Image source={icons.notificationFilled} className="iconImg" />
+            <Ionicons
+              name="notifications"
+              size={iconSize.lg}
+              color={colors.primary}
+            />
           ) : (
-            <Image source={icons.notificationEmpty} className="iconImg" />
+            <Ionicons
+              name="notifications-outline"
+              size={iconSize.lg}
+              color={colors.iconPrimary}
+            />
           )}
         </TouchableOpacity>
       </View>
@@ -37,16 +63,14 @@ export default function Home() {
         <SearchBar />
 
         <View className="">
-          <Text className="font-JakartaSemiBold font-semibold text-2xl my-4 text-main">
-            Your current location
-          </Text>
-          <Text className="descText text-center">Coming soon</Text>
+          <Text className="subHeading">Your current location</Text>
+          <View className="flex flex-row items-center h-[300px]">
+            <Map />
+          </View>
         </View>
 
         <View className="">
-          <Text className="font-JakartaSemiBold font-semibold text-2xl my-4">
-            Recent Rides
-          </Text>
+          <Text className="subHeading my-4">Recent Rides</Text>
           <Text className="descText text-center">Coming soon</Text>
         </View>
       </ScrollView>

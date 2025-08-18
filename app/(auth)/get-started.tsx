@@ -1,9 +1,10 @@
+import AuthBottomText from "@/components/authBottomText";
 import CustomButton from "@/components/customButton";
 import Divider from "@/components/divider";
 import OAuthBtn from "@/components/OAuthBtn";
 import { images } from "@/constants/images";
 import { router } from "expo-router";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, View } from "react-native";
 
 export default function SignUp() {
   return (
@@ -31,14 +32,11 @@ export default function SignUp() {
 
         <OAuthBtn />
 
-        <Text className="text-faintText text-lg mt-3 flex flex-1 items-center justify-center text-center w-full">
-          <Text className="text-faintText">Already have an account? </Text>
-          <TouchableOpacity onPress={() => router.replace("/(auth)/sign-in")}>
-            <Text className="text-primary font-JakartaSemiBold relative top-0.5">
-              Log In
-            </Text>
-          </TouchableOpacity>
-        </Text>
+        <AuthBottomText
+          titleText="Already have an account?"
+          linkText="Log In"
+          onpress={() => router.replace("/(auth)/sign-in")}
+        />
       </View>
     </View>
   );

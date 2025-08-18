@@ -1,9 +1,12 @@
+import AuthBottomText from "@/components/authBottomText";
 import CustomButton from "@/components/customButton";
 import Divider from "@/components/divider";
 import InputField from "@/components/inputField";
+import { Colors } from "@/components/nativeThemeSetter";
 import OAuthBtn from "@/components/OAuthBtn";
-import { icons } from "@/constants/icons";
+import { iconSize } from "@/constants/icons";
 import { images } from "@/constants/images";
+import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -13,6 +16,8 @@ export default function SignIn() {
     email: "",
     password: "",
   });
+  const colors = Colors();
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const onSignIn = async () => {
     // Handle sign-in logic here
@@ -20,10 +25,7 @@ export default function SignIn() {
   };
 
   return (
-    <ScrollView
-      className="flex-1 pb-10"
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollView className="flex-1 pb-10" showsVerticalScrollIndicator={false}>
       <View className="flex-1">
         <View className="relative w-full h-[250px]">
           <Image source={images.signUpCar} className="z-0 w-full h-[250px]" />
@@ -37,7 +39,6 @@ export default function SignIn() {
           <InputField
             label="Email"
             placeholder="Enter your email"
-            icon={icons.email}
             value={form.email}
             onChangeText={(value) =>
               setForm({
@@ -45,27 +46,54 @@ export default function SignIn() {
                 email: value,
               })
             }
+            IconLeft={() => (
+              <Ionicons
+                name="mail-outline"
+                size={iconSize.md}
+                color={colors.iconSecondary}
+                className="ml-4"
+              />
+            )}
           />
 
           <InputField
             label="Password"
             placeholder="Enter your password"
-            icon={icons.lock}
             value={form.password}
-            secureTextEntry={true}
+            secureTextEntry={!passwordVisible}
             onChangeText={(value) =>
               setForm({
                 ...form,
                 password: value,
               })
             }
+            IconLeft={() => (
+              <Ionicons
+                name="lock-closed-outline"
+                size={iconSize.md}
+                color={colors.iconSecondary}
+                className="ml-5"
+              />
+            )}
+            IconRight={() => (
+              <TouchableOpacity
+                onPress={() => setPasswordVisible(!passwordVisible)}
+              >
+                <Ionicons
+                  name={passwordVisible ? "eye-off-outline" : "eye-outline"}
+                  size={iconSize.md}
+                  color={colors.iconSecondary}
+                  className="mr-4"
+                />
+              </TouchableOpacity>
+            )}
           />
 
           <TouchableOpacity
             className="flex flex-row items-center justify-end mt-2"
             onPress={() => router.push("/(auth)/forgot-password")}
           >
-            <Text className="text-main font-JakartaSemiBold">
+            <Text className="text-primary font-JakartaSemiBold">
               Forgot Password?
             </Text>
           </TouchableOpacity>
@@ -80,14 +108,11 @@ export default function SignIn() {
 
           <OAuthBtn />
 
-          <Text className="text-neutral-600 text-lg mt-3 flex flex-1 items-center justify-center text-center w-full">
-            <Text>Don&apos;t have an account? </Text>
-            <TouchableOpacity onPress={() => router.push("/(auth)/sign-up")}>
-              <Text className="text-main font-JakartaSemiBold relative top-0.5">
-                Sign up
-              </Text>
-            </TouchableOpacity>
-          </Text>
+          <AuthBottomText
+            titleText="Don't have an account?"
+            linkText="Sign Up"
+            onpress={() => router.replace("/(auth)/sign-up")}
+          />
         </View>
       </View>
     </ScrollView>

@@ -1,4 +1,5 @@
-import { iconColor, iconSize } from "@/constants/icons";
+import { Colors } from "@/components/nativeThemeSetter";
+import { iconSize } from "@/constants/icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
 import React from "react";
@@ -6,6 +7,8 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Faqs() {
+  const colors = Colors();
+
   return (
     <SafeAreaView className="tabPage">
       <View className="header">
@@ -18,7 +21,7 @@ export default function Faqs() {
             <Ionicons
               name="arrow-back-outline"
               size={iconSize.lg}
-              color={iconColor.primary}
+              color={colors.iconPrimary}
             />
           </TouchableOpacity>
 

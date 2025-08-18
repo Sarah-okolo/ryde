@@ -80,13 +80,15 @@ declare interface GoogleInputProps {
 
 declare interface InputFieldProps extends TextInputProps {
   label: string;
-  icon?: any;
+  IconLeft?: React.ComponentType<any>;
+  IconRight?: React.ComponentType<any>;
   secureTextEntry?: boolean;
   labelStyle?: string;
   containerStyle?: string;
   inputStyle?: string;
   iconStyle?: string;
   className?: string;
+  error?: string;
 }
 
 declare interface PaymentProps {

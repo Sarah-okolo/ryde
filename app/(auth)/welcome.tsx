@@ -32,7 +32,7 @@ export default function Onboarding() {
       <Swiper
         ref={swiperRef} // Reference to the swiper instance
         loop={false} // Disable looping to prevent infinite swiping
-        dot={<View className="w-8 h-1 mx-1 bg-iconSecondary" />} // This allows us to customize how the swiper dots would look like
+        dot={<View className="w-8 h-1 mx-1 bg-iconFaint" />} // This allows us to customize how the swiper dots would look like
         activeDot={<View className="w-8 h-1 mx-1 bg-primary" />} // Active dot styling
         onIndexChanged={(index) => setActiveIndex(index)} // Update the active index when the swiper changes
       >
